@@ -8,15 +8,24 @@ function Manager() {
     const [address, setAddress] = useState("");
     const [balancePET, setBalancePET] = useState(0);
     const PricePET = 400 * 10 ** 8;
+    const [chainId, setChainId] = useState(0);
+    const mainchain = 96;
+    const testnetchain = 25925;
     const AddressPay = "0x1AcEE889F30fcbF514718a252B35Ee72FC15d082";
     useEffect(() => {
         if (typeof window.ethereum !== "undefined") {
             fetch();
+            checkProvider();
         }
     });
 
+    async function checkProvider() {
+        setChainId(web3.currentProvider.networkVersion);
+    }
+
     window.ethereum.on("accountsChanged", function (accounts) {
         setAddress(accounts[0]);
+        setChainId(web3.currentProvider.networkVersion);
     });
 
     useEffect(() => {
@@ -31,13 +40,14 @@ function Manager() {
             return <h1>ERROR</h1>;
         }
         setAddress(accounts[0]);
+        setChainId(web3.currentProvider.networkVersion);
 
         let BalancePet = await ERC20.methods.balanceOf(accounts[0]).call();
         setBalancePET(BalancePet);
     }
 
     async function approve_onclick(types, value) {
-        if (types === "Cards") {
+        if (types === "Characters") {
             if (balancePET >= PricePET) {
                 console.log("Starting Payment...");
                 ERC20.methods
@@ -71,7 +81,7 @@ function Manager() {
                     PricePET / 10 ** 8
                 }`}</h4>;
             }
-        } else if (types === "Characters") {
+        } else if (types === "Cards") {
             let balanceuser = (await web3.eth.getBalance(address)) / 10 ** 18;
             if (!value) {
                 return console.error("Error Parameter Value.");
@@ -117,19 +127,23 @@ function Manager() {
     }
 
     function True_Ether() {
-        if (balancePET >= PricePET) {
-            return (
-                <button onClick={() => approve_onclick("Cards")}>
-                    Start Random Cards
-                </button>
-            );
-        } else {
-            return (
-                <span>{`ERROR : Your Balance of PET has ${
-                    balancePET / 10 ** 8
-                } But We need ${PricePET / 10 ** 8} PET
+        if (String(chainId) === String(testnetchain)) {
+            if (balancePET >= PricePET) {
+                return (
+                    <button onClick={() => approve_onclick("Cards")}>
+                        Start Random Cards
+                    </button>
+                );
+            } else {
+                return (
+                    <span>{`ERROR : Your Balance of PET has ${
+                        balancePET / 10 ** 8
+                    } But We need ${PricePET / 10 ** 8} PET
                 `}</span>
-            );
+                );
+            }
+        } else {
+            return <h3>{`Error ChainId : ${chainId} $`}</h3>;
         }
     }
 

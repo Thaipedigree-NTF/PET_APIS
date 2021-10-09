@@ -173,8 +173,38 @@
         "constant": false,
         "inputs": [
             {
+                "internalType": "address payable",
+                "name": "_address",
+                "type": "address"
+            }
+        ],
+        "name": "Change_AddressPay",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            }
+        ],
+        "name": "Change_PetPrice",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
                 "internalType": "string",
-                "name": "name",
+                "name": "namecard",
                 "type": "string"
             },
             {
@@ -186,6 +216,11 @@
                 "internalType": "uint256",
                 "name": "level",
                 "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "types",
+                "type": "string"
             }
         ],
         "name": "mintCard",
@@ -355,13 +390,7 @@
         "type": "function"
     },
     {
-        "inputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "constant": true,
+        "constant": false,
         "inputs": [
             {
                 "internalType": "address",
@@ -369,12 +398,43 @@
                 "type": "address"
             }
         ],
-        "name": "_TokenIdbyAddress",
+        "name": "TransferOwner",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "symbols",
+                "type": "string"
+            },
+            {
+                "internalType": "address payable",
+                "name": "petaddress",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "AddressPay",
         "outputs": [
             {
-                "internalType": "uint256[]",
+                "internalType": "address payable",
                 "name": "",
-                "type": "uint256[]"
+                "type": "address"
             }
         ],
         "payable": false,
@@ -485,6 +545,53 @@
                 "internalType": "uint256",
                 "name": "level",
                 "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "types",
+                "type": "string"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            }
+        ],
+        "name": "CardsbyAddress",
+        "outputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            }
+        ],
+        "name": "CharactersbyAddress",
+        "outputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
             }
         ],
         "payable": false,
@@ -541,6 +648,21 @@
     {
         "constant": true,
         "inputs": [],
+        "name": "name",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
         "name": "owner",
         "outputs": [
             {
@@ -568,6 +690,36 @@
                 "internalType": "address",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "PetContract",
+        "outputs": [
+            {
+                "internalType": "address payable",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "PetPrice",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "payable": false,
@@ -610,6 +762,42 @@
                 "internalType": "bool",
                 "name": "",
                 "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "symbol",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            }
+        ],
+        "name": "TokenIdbyAddress",
+        "outputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
             }
         ],
         "payable": false,
