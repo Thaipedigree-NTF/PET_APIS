@@ -86,13 +86,16 @@ app.post("/api/testnet/mintcard", async function (req, res) {
         var account = req.body.account;
         var types = req.body.types;
         var level = req.body.level;
+        var URI = req.body.URI;
+        var transactions = req.body.transactions;
         let replyer = "";
         await NFT_Contract_testnet.methods
             .mintCard(
                 String(namecard),
                 String(account),
                 String(level),
-                String(types)
+                String(types),
+                String(URI)
             )
             .send({
                 from: "0x0eD23a597f67716916b259D65D13e156a6BF3CC4", //? address you need to use for mint need have permission SuperAdmins and need to use private key for auth //
