@@ -80,14 +80,14 @@ app.post("/api/testnet/mintcard", async function (req, res) {
         req.body.namecard &&
         req.body.account &&
         req.body.level &&
-        req.body.types
+        req.body.types &&
+        req.body.URI
     ) {
         var namecard = req.body.namecard;
         var account = req.body.account;
         var types = req.body.types;
         var level = req.body.level;
         var URI = req.body.URI;
-        var transactions = req.body.transactions;
         let replyer = "";
         await NFT_Contract_testnet.methods
             .mintCard(
